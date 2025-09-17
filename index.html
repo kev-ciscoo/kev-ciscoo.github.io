@@ -1,65 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kevin Francisco — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header container">
-    <div class="brand">KF</div>
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container">
+      <h1>Kevin Francisco</h1>
+      <address class="contact">
+        <a href="mailto:junior.cisco11@gmail.com">junior.cisco11@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/kevin-francisco-engineer" target="_blank" rel="noopener">LinkedIn</a>
+      </address>
+      <nav aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="project1.html">Project 1</a>
+        <a href="project2.html">Project 2</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section id="home" class="section hero container">
-      <canvas id="particles" aria-hidden="true"></canvas>
-      <h1 id="title">Kevin Francisco</h1>
-      <p class="tagline">IT • Product • Data — turning ideas into shipped outcomes.</p>
-      <a class="btn" href="#projects">See projects</a>
-    </section>
+  <main class="container grid">
+    <!-- Left: content -->
+    <div class="content">
+      <section aria-labelledby="objective-heading">
+        <h2 id="objective-heading">Objective</h2>
+        <p class="placeholder" aria-live="polite">
+          <!-- Fill this in with your professional objective -->
+          Click the pencil in GitHub to edit this paragraph and add your objective statement.
+        </p>
+      </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section container">
-      <h2>Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="assets/project1.png" alt="Project 1 cover">
-          <h3>Project 1</h3>
-          <p>Brief, metric-driven impact statement.</p>
-          <a class="link" href="project1.html">Case study →</a>
+      <section aria-labelledby="education-heading">
+        <h2 id="education-heading">Education</h2>
+        <article>
+          <h3>University of Central Florida</h3>
+          <p>B.S. in Information Technology</p>
         </article>
+      </section>
 
-        <article class="card">
-          <img src="assets/project2.png" alt="Project 2 cover">
-          <h3>Project 2</h3>
-          <p>Brief, metric-driven impact statement.</p>
-          <a class="link" href="project2.html">Case study →</a>
-        </article>
-      </div>
-    </section>
+      <section aria-labelledby="experience-heading">
+        <h2 id="experience-heading">Relevant Work Experience</h2>
+        <ul class="list-cards">
+          <!-- Add <li> items as you gain experience -->
+          <li class="placeholder">Add role, organization, dates, and impact bullets here.</li>
+        </ul>
+      </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section container">
-      <h2>Contact</h2>
-      <p>
-        <a class="link" href="mailto:your@ucf.edu">your@ucf.edu</a> ·
-        <a class="link" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a class="link" href="Kevin_Francisco_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-      </p>
-    </section>
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Projects</h2>
+        <ul class="list-cards">
+          <li>
+            <article>
+              <h3><a href="project1.html">Leadership — Founder, Student Org (“Loop”)</a></h3>
+              <p>Brief teaser about your leadership scope. Click to see details.</p>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3><a href="project2.html">Disney Case Study</a></h3>
+              <p>One-sentence summary of the problem, approach, and outcome. Click for details.</p>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Skills</h2>
+        <ul class="tags placeholder">
+          <!-- Replace with real skills; keep short and scannable -->
+          <li>HTML</li><li>CSS</li><li>Python</li><li>SQL</li><li>Product Strategy</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="awards-heading">
+        <h2 id="awards-heading">Awards & Honors</h2>
+        <ul class="list-cards">
+          <li class="placeholder">Add awards here (leave section empty or remove if none).</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Right: reserved photo area -->
+    <aside class="sidebar" aria-labelledby="photo-heading">
+      <h2 class="visually-hidden" id="photo-heading">Profile Photo</h2>
+      <figure class="photo-frame">
+        <img src="images/profile.jpg" alt="Professional headshot of Kevin Francisco" />
+        <figcaption>Replace with your professional photo (images/profile.jpg).</figcaption>
+      </figure>
+    </aside>
   </main>
 
-  <footer class="container footer">© 2025 Kevin Francisco</footer>
-
-  <!-- Particles CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Kevin Francisco</p>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
 </body>
 </html>
+</html>
+
