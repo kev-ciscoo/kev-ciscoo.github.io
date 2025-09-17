@@ -1,46 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kevin Francisco - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kevin Francisco — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Kevin Francisco</h1>
-    <p>Email: <a href="mailto:your@ucf.edu">your@ucf.edu</a> | 
-       <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="project1.html">Project 1</a> |
-      <a href="project2.html">Project 2</a>
+  <header class="site-header container">
+    <div class="brand">KF</div>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section>
-      <h2>Objective</h2>
-      <p>Aspiring IT professional and product manager with experience in data science, SQL, and project management.</p>
+    <!-- HERO -->
+    <section id="home" class="section hero container">
+      <canvas id="particles" aria-hidden="true"></canvas>
+      <h1 id="title">Kevin Francisco</h1>
+      <p class="tagline">IT • Product • Data — turning ideas into shipped outcomes.</p>
+      <a class="btn" href="#projects">See projects</a>
     </section>
 
-    <section>
-      <h2>Education</h2>
-      <p>B.S. in Information Technology, University of Central Florida, Dec 2025</p>
+    <!-- PROJECTS -->
+    <section id="projects" class="section container">
+      <h2>Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="assets/project1.png" alt="Project 1 cover">
+          <h3>Project 1</h3>
+          <p>Brief, metric-driven impact statement.</p>
+          <a class="link" href="project1.html">Case study →</a>
+        </article>
+
+        <article class="card">
+          <img src="assets/project2.png" alt="Project 2 cover">
+          <h3>Project 2</h3>
+          <p>Brief, metric-driven impact statement.</p>
+          <a class="link" href="project2.html">Case study →</a>
+        </article>
+      </div>
     </section>
 
-    <section>
-      <h2>Skills</h2>
-      <ul>
-        <li>Python, SQL, HTML, CSS</li>
-        <li>Data Visualization (Tableau, Excel)</li>
-        <li>Product Management & Leadership</li>
-      </ul>
+    <!-- CONTACT -->
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <p>
+        <a class="link" href="mailto:your@ucf.edu">your@ucf.edu</a> ·
+        <a class="link" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a class="link" href="Kevin_Francisco_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </p>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Kevin Francisco</p>
-  </footer>
+  <footer class="container footer">© 2025 Kevin Francisco</footer>
+
+  <!-- Particles CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
