@@ -5,15 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kevin Francisco — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Inline hero styling (you can merge into style.css later) -->
+  <style>
+    :root{
+      --accent:#14c6de;
+      --header-h:64px;   /* height of your site header */
+      --sticky-pad:10px; /* space under the header */
+    }
+
+    /* smooth scroll & correct landing below the fixed header */
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top: calc(var(--header-h) + var(--sticky-pad));
+    }
+    [id]{ scroll-margin-top: calc(var(--header-h) + var(--sticky-pad)); }
+
+    /* ===== sticky section heading (same pattern as project pages) ===== */
+    .sticky-h2{
+      position: sticky;
+      top: calc(var(--header-h) + var(--sticky-pad));
+      z-index: 2;
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      background: linear-gradient(to bottom, rgba(11,13,16,.85), rgba(11,13,16,.70));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      font-size: clamp(20px, 2.6vw, 26px);
+    }
+    .sticky-sub{
+      margin: 6px 0 14px;
+      color: var(--muted, #a5b0c2);
+    }
+
+    /* HERO split grid */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 32px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 20px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin: 0 0 6px;
+    }
+    .display {
+      font-size: 56px;
+      line-height: 1.05;
+      margin: 0 0 10px;
+    }
+    .display .accent { color: var(--accent); }
+    .lead {
+      color: var(--muted, #a5b0c2);
+      font-size: 18px;
+      max-width: 52ch;
+      margin: 0;
+    }
+    .actions { display: flex; gap: 12px; margin: 18px 0 8px; }
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line, #1f2937);
+      color: inherit;
+      text-decoration: none;
+    }
+    .btn.primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: #fff;
+      font-weight: 700;
+    }
+    .btn.ghost { background: transparent; }
+    .socials { display: flex; gap: 10px; margin-top: 8px; }
+    .icon-btn {
+      width: 40px; height: 40px; border-radius: 999px;
+      display: grid; place-items: center;
+      border: 1px solid var(--line, #1f2937);
+      background: rgba(255,255,255,0.02);
+      text-decoration: none;
+      color: inherit; font-weight: 700;
+    }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Photo */
+    .hero-photo { margin: 0; display: block; }
+    .hero-photo img {
+      width: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    /* Sections styled as cards */
+    .content > section,
+    .list-cards > li > article {
+      background: var(--panel, #111827);
+      border: 1px solid var(--line, #1f2937);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 900px) {
+      :root{ --header-h:72px; } /* if your header gets taller on mobile */
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo { margin-top: 20px; }
+      .actions, .socials { justify-content: center; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>Kevin Francisco</h1>
-      <address class="contact">
-        <a href="mailto:junior.cisco11@gmail.com">junior.cisco11@gmail.com</a> ·
-        <a href="https://www.linkedin.com/in/kevin-francisco-engineer" target="_blank" rel="noopener">LinkedIn</a>
-      </address>
+      <h1>Product Manager</h1>
       <nav aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
         <a href="project1.html">Project 1</a>
@@ -22,75 +136,101 @@
     </div>
   </header>
 
-  <main class="container grid">
-    <!-- Left: content -->
-    <div class="content">
-      <section aria-labelledby="objective-heading">
-        <h2 id="objective-heading">Objective</h2>
-        <p class="placeholder" aria-live="polite">
-          <!-- Fill this in with your professional objective -->
-          Click the pencil in GitHub to edit this paragraph and add your objective statement.
-        </p>
-      </section>
+  <!-- HERO -->
+  <section id="home" class="hero-grid">
+    <section class="hero-text">
+      <p class="eyebrow">Hi, There!</p>
+      <h1 class="display">I'm <span class="accent">Kevin</span></h1>
+      <p class="lead">
+        just a guy who loves diving into the mindset of the user and understanding their experiences — always focused on building the perfect product for them
+      </p>
+      <nav class="actions" aria-label="Primary actions">
+        <a class="btn primary" href="mailto:junior.cisco11@gmail.com">Contact Me</a>
+        <a class="btn ghost" href="slides/Kevin_Francisco_PM_Final1.pdf" target="_blank" rel="noopener">
+  View Resume
+</a>
 
-      <section aria-labelledby="education-heading">
-        <h2 id="education-heading">Education</h2>
-        <article>
-          <h3>University of Central Florida</h3>
-          <p>B.S. in Information Technology</p>
+      </nav>
+      <nav class="socials" aria-label="Social links">
+        
+        <a class="icon-btn" href="https://www.linkedin.com/in/kevin-francisco-engineer" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        
+      </nav>
+    </section>
+    <figure class="hero-photo">
+      <img src="images/profile.jpg" alt="Professional headshot of Kevin Francisco" />
+    </figure>
+  </section>
+
+  <!-- MAIN -->
+  <main class="container content" role="main">
+    <!-- Education -->
+    <section id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading" class="sticky-h2">Education</h2>
+      <p class="sticky-sub">University & degree details.</p>
+      <article>
+        <p><strong>University of Central Florida</strong></p>
+        <p>B.S. Information Technology, College of Engineering and Computer Science</p>
+      </article>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" class="sticky-h2">Work Experience</h2>
+      <p class="sticky-sub">Internships and roles I've held.</p>
+      <section class="timeline">
+        <article class="timeline-item">
+          <h3>Technical Product Manager Intern — NBCUniversal</h3>
+          <p>Part of decision science team within GolfNow ML organization.</p>
+        </article>
+        <article class="timeline-item">
+          <h3>Product Manager Intern — NBCUniversal</h3>
+          <p>SportsEngine &amp; Fandango teams with a focus on B2C &amp; B2B model.</p>
+        </article>
+        <article class="timeline-item">
+          <h3>Digital Product Strategist — Entrepreneur</h3>
+          <p>Developed digital strategy that led to 30k followers for social media content brand.</p>
         </article>
       </section>
+    </section>
 
-      <section aria-labelledby="experience-heading">
-        <h2 id="experience-heading">Relevant Work Experience</h2>
-        <ul class="list-cards">
-          <!-- Add <li> items as you gain experience -->
-          <li class="placeholder">Add role, organization, dates, and impact bullets here.</li>
-        </ul>
-      </section>
+    <!-- Projects -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="sticky-h2">Projects</h2>
+      <p class="sticky-sub">Selected work — more on project pages.</p>
+      <ul class="list-cards">
+        <li>
+          <article>
+            <h3><a href="project1.html">Loop - Product Management Student Organization</a></h3>
+            <p>Founded Loop, UCF's first student org dedicated to product management, building a pipeline of PM talent.</p>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3><a href="project2.html">Disney Case Study</a></h3>
+            <p>Reimagined digital/in-person guest check-in to reduce friction and boost satisfaction.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
 
-      <section aria-labelledby="projects-heading">
-        <h2 id="projects-heading">Projects</h2>
-        <ul class="list-cards">
-          <li>
-            <article>
-              <h3><a href="project1.html">Leadership — Founder, Student Org (“Loop”)</a></h3>
-              <p>Brief teaser about your leadership scope. Click to see details.</p>
-            </article>
-          </li>
-          <li>
-            <article>
-              <h3><a href="project2.html">Disney Case Study</a></h3>
-              <p>One-sentence summary of the problem, approach, and outcome. Click for details.</p>
-            </article>
-          </li>
-        </ul>
-      </section>
+    <!-- Skills -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="sticky-h2">Skills</h2>
+      <p class="sticky-sub">Tools & domains I use most.</p>
+      <ul class="tags placeholder">
+        <li>HTML</li><li>CSS</li><li>Python</li><li>SQL</li><li>Product Strategy</li>
+      </ul>
+    </section>
 
-      <section aria-labelledby="skills-heading">
-        <h2 id="skills-heading">Skills</h2>
-        <ul class="tags placeholder">
-          <!-- Replace with real skills; keep short and scannable -->
-          <li>HTML</li><li>CSS</li><li>Python</li><li>SQL</li><li>Product Strategy</li>
-        </ul>
-      </section>
-
-      <section aria-labelledby="awards-heading">
-        <h2 id="awards-heading">Awards & Honors</h2>
-        <ul class="list-cards">
-          <li class="placeholder">Add awards here (leave section empty or remove if none).</li>
-        </ul>
-      </section>
-    </div>
-
-    <!-- Right: reserved photo area -->
-    <aside class="sidebar" aria-labelledby="photo-heading">
-      <h2 class="visually-hidden" id="photo-heading">Profile Photo</h2>
-      <figure class="photo-frame">
-        <img src="images/profile.jpg" alt="Professional headshot of Kevin Francisco" />
-        <figcaption>Replace with your professional photo (images/profile.jpg).</figcaption>
-      </figure>
-    </aside>
+    <!-- Awards -->
+    <section id="awards" aria-labelledby="awards-heading">
+      <h2 id="awards-heading" class="sticky-h2">Awards &amp; Honors</h2>
+      <p class="sticky-sub">Recognition for academic & project work.</p>
+      <ul class="list-cards">
+        <li class="placeholder">Dean's List, President's List.</li>
+      </ul>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -103,5 +243,3 @@
   </footer>
 </body>
 </html>
-</html>
-
