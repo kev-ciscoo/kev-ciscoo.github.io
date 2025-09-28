@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 2 — Disney Case Competition | Kevin Francisco</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Page-local CSS (slider + arrows only) -->
+  <style>
+    /* Single-column hero for this page */
+    .hero-grid.case-hero { grid-template-columns: 1fr !important; }
+
+    /* Anchor-based, scroll-snap slider */
+    .deck { border-radius: var(--radius); background: var(--panel); border:1px solid var(--line); }
+    .deck-viewport{
+      display:flex; gap:12px;
+      overflow-x:auto; scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      padding: 0 0 6px;
+    }
+    .deck-viewport::-webkit-scrollbar{ height:8px; }
+    .deck-viewport::-webkit-scrollbar-thumb{ background:var(--line); border-radius:999px; }
+
+    .deck-slide{
+      position:relative;
+      flex: 0 0 100%;
+      scroll-snap-align:center;
+      aspect-ratio:16/9;
+      background:#0b0e14;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+    .deck-slide img{ width:100%; height:100%; object-fit:contain; background:#0b0e14; }
+
+    /* Liquid-glass arrows (anchors) */
+    .arrow{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:40px; height:40px; border-radius:999px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px) saturate(140%);
+      -webkit-backdrop-filter: blur(8px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.35);
+      color:#fff; font-size:20px; line-height:40px; text-align:center;
+      text-decoration:none; box-shadow:0 6px 16px rgba(0,0,0,.25);
+      user-select:none; -webkit-tap-highlight-color:transparent;
+    }
+    .arrow:hover{ background: rgba(255,255,255,0.28); }
+    .arrow.prev{ left:10px; }
+    .arrow.next{ right:10px; }
+
+    /* Dots */
+    .deck-dots{
+      display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+      padding:10px 10px 14px;
+    }
+    .deck-dots a{
+      width:8px; height:8px; border-radius:999px; background:var(--line);
+      display:inline-block; text-decoration:none;
+    }
+    .deck-dots a:hover{ background:#14c6de; }
+
+    /* Video */
+    .deck-video{
+      width:100%; aspect-ratio:16/9; border-radius:12px;
+      background:#0b0e14; box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (unchanged) -->
+  <header class="site-header">
+    <div class="container">
+      <h1>Product Manager</h1>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="project1.html">Project 1</a>
+        <a href="project2.html" aria-current="page">Project 2</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-grid case-hero">
+    <section class="hero-text">
+      <p class="eyebrow">Case Competition • Disney</p>
+      <h1 class="display">Disney <span class="accent">Case Competition</span></h1>
+      <p class="lead">
+        Our team reimagined a flagship hospitality experience by diagnosing pain points,
+        sizing impact, and proposing a feasible solution with measurable outcomes.
+        Below are selected slides and the full presentation.
+      </p>
+      <nav class="actions" aria-label="Primary actions">
+        <a class="btn primary" href="#video">Watch Presentation</a>
+      </nav>
+    </section>
+  </section>
+
+  <main class="container content" role="main">
+    <!-- SLIDES -->
+    <section id="slides" aria-labelledby="slides-heading">
+      <h2 id="slides-heading" class="sticky-h2">Slides — Highlights</h2>
+      <p class="sticky-sub">Use the arrows or dots to navigate.</p>
+
+      <article class="card">
+        <div class="deck" aria-label="Disney slide deck">
+          <div class="deck-viewport">
+            <!-- Each slide includes its own prev/next anchor -->
+            <figure id="s1"  class="deck-slide">
+              <img src="slides/Slide1.jpg"  alt="Slide 1">
+              <a class="arrow prev" href="#s22" aria-label="Previous">‹</a>
+              <a class="arrow next" href="#s2"  aria-label="Next">›</a>
+            </figure>
+            <figure id="s2"  class="deck-slide">
+              <img src="slides/Slide2.jpg"  alt="Slide 2">
+              <a class="arrow prev" href="#s1">‹</a><a class="arrow next" href="#s3">›</a>
+            </figure>
+            <figure id="s3"  class="deck-slide">
+              <img src="slides/Slide3.jpg"  alt="Slide 3">
+              <a class="arrow prev" href="#s2">‹</a><a class="arrow next" href="#s4">›</a>
+            </figure>
+            <figure id="s4"  class="deck-slide">
+              <img src="slides/Slide4.jpg"  alt="Slide 4">
+              <a class="arrow prev" href="#s3">‹</a><a class="arrow next" href="#s5">›</a>
+            </figure>
+            <figure id="s5"  class="deck-slide">
+              <img src="slides/Slide5.jpg"  alt="Slide 5">
+              <a class="arrow prev" href="#s4">‹</a><a class="arrow next" href="#s6">›</a>
+            </figure>
+            <figure id="s6"  class="deck-slide">
+              <img src="slides/Slide6.jpg"  alt="Slide 6">
+              <a class="arrow prev" href="#s5">‹</a><a class="arrow next" href="#s7">›</a>
+            </figure>
+            <figure id="s7"  class="deck-slide">
+              <img src="slides/Slide7.jpg"  alt="Slide 7">
+              <a class="arrow prev" href="#s6">‹</a><a class="arrow next" href="#s8">›</a>
+            </figure>
+            <figure id="s8"  class="deck-slide">
+              <img src="slides/Slide8.jpg"  alt="Slide 8">
+              <a class="arrow prev" href="#s7">‹</a><a class="arrow next" href="#s9">›</a>
+            </figure>
+            <figure id="s9"  class="deck-slide">
+              <img src="slides/Slide9.jpg"  alt="Slide 9">
+              <a class="arrow prev" href="#s8">‹</a><a class="arrow next" href="#s10">›</a>
+            </figure>
+            <figure id="s10" class="deck-slide">
+              <img src="slides/Slide10.jpg" alt="Slide 10">
+              <a class="arrow prev" href="#s9">‹</a><a class="arrow next" href="#s11">›</a>
+            </figure>
+            <figure id="s11" class="deck-slide">
+              <img src="slides/Slide11.jpg" alt="Slide 11">
+              <a class="arrow prev" href="#s10">‹</a><a class="arrow next" href="#s12">›</a>
+            </figure>
+            <figure id="s12" class="deck-slide">
+              <img src="slides/Slide12.jpg" alt="Slide 12">
+              <a class="arrow prev" href="#s11">‹</a><a class="arrow next" href="#s13">›</a>
+            </figure>
+            <figure id="s13" class="deck-slide">
+              <img src="slides/Slide13.jpg" alt="Slide 13">
+              <a class="arrow prev" href="#s12">‹</a><a class="arrow next" href="#s14">›</a>
+            </figure>
+            <figure id="s14" class="deck-slide">
+              <img src="slides/Slide14.jpg" alt="Slide 14">
+              <a class="arrow prev" href="#s13">‹</a><a class="arrow next" href="#s15">›</a>
+            </figure>
+            <figure id="s15" class="deck-slide">
+              <img src="slides/Slide15.jpg" alt="Slide 15">
+              <a class="arrow prev" href="#s14">‹</a><a class="arrow next" href="#s16">›</a>
+            </figure>
+            <figure id="s16" class="deck-slide">
+              <img src="slides/Slide16.jpg" alt="Slide 16">
+              <a class="arrow prev" href="#s15">‹</a><a class="arrow next" href="#s17">›</a>
+            </figure>
+            <figure id="s17" class="deck-slide">
+              <img src="slides/Slide17.jpg" alt="Slide 17">
+              <a class="arrow prev" href="#s16">‹</a><a class="arrow next" href="#s18">›</a>
+            </figure>
+            <figure id="s18" class="deck-slide">
+              <img src="slides/Slide18.jpg" alt="Slide 18">
+              <a class="arrow prev" href="#s17">‹</a><a class="arrow next" href="#s19">›</a>
+            </figure>
+            <figure id="s19" class="deck-slide">
+              <img src="slides/Slide19.jpg" alt="Slide 19">
+              <a class="arrow prev" href="#s18">‹</a><a class="arrow next" href="#s20">›</a>
+            </figure>
+            <figure id="s20" class="deck-slide">
+              <img src="slides/Slide20.jpg" alt="Slide 20">
+              <a class="arrow prev" href="#s19">‹</a><a class="arrow next" href="#s21">›</a>
+            </figure>
+            <figure id="s21" class="deck-slide">
+              <img src="slides/Slide21.jpg" alt="Slide 21">
+              <a class="arrow prev" href="#s20">‹</a><a class="arrow next" href="#s22">›</a>
+            </figure>
+            <figure id="s22" class="deck-slide">
+              <img src="slides/Slide22.jpg" alt="Slide 22">
+              <a class="arrow prev" href="#s21">‹</a><a class="arrow next" href="#s1">›</a>
+            </figure>
+          </div>
+
+          <!-- Dots -->
+          <nav class="deck-dots" aria-label="Slides">
+            <a href="#s1"></a><a href="#s2"></a><a href="#s3"></a><a href="#s4"></a><a href="#s5"></a><a href="#s6"></a>
+            <a href="#s7"></a><a href="#s8"></a><a href="#s9"></a><a href="#s10"></a><a href="#s11"></a><a href="#s12"></a>
+            <a href="#s13"></a><a href="#s14"></a><a href="#s15"></a><a href="#s16"></a><a href="#s17"></a><a href="#s18"></a>
+            <a href="#s19"></a><a href="#s20"></a><a href="#s21"></a><a href="#s22"></a>
+          </nav>
+        </div>
+      </article>
+    </section>
+
+    <!-- VIDEO -->
+    <section id="video" aria-labelledby="video-heading">
+      <h2 id="video-heading" class="sticky-h2">Presentation Video</h2>
+      <p class="sticky-sub">Watch the full presentation recording.</p>
+
+      <article class="card">
+        <video class="deck-video"
+               controls
+               preload="metadata"
+               poster="slides/Slide1.jpg"
+               controlsList="nodownload noplaybackrate"
+               disablepictureinpicture
+               oncontextmenu="return false">
+          <source src="video/ZoomRecording.mp4" type="video/mp4" />
+          Your browser doesn’t support HTML5 video.
+        </video>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Kevin Francisco</p>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
