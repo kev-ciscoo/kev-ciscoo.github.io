@@ -1,0 +1,410 @@
+/* =========================
+   THEME & BASE
+========================= */
+:root{
+  --bg:#0b0e14;
+  --panel:#111827;
+  --ink:#e6eaf2;
+  --muted:#a5b0c2;
+  --line:#1f2937;
+  --brand:#60a5fa;
+  --radius:16px;
+  --max:1100px;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f8fafc; 
+    --panel:#ffffff; 
+    --ink:#0f172a; 
+    --muted:#475569; 
+    --line:#e2e8f0; 
+    --brand:#2563eb;
+  }
+}
+*{ box-sizing:border-box }
+html,body{ margin:0 }
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.6 system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
+  scroll-behavior:smooth;
+}
+.container{ max-width:var(--max); margin:0 auto; padding:0 20px }
+
+/* =========================
+   HEADER (glassy sticky)
+========================= */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(17,24,39,.55);          /* more see-through */
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.site-header .container{
+  display:flex; gap:16px; align-items:center;
+  padding:14px 20px;
+}
+.site-header h1{ font-size:18px; margin:0 }
+.site-header nav{ margin-left:auto; display:flex; gap:16px }
+.site-header a{ color:#fff; opacity:.95; text-decoration:none } /* white links */
+.site-header a:hover{ opacity:1; color:#fff }
+
+/* =========================
+   TYPE / HEADINGS
+========================= */
+h1{ font-size:48px; line-height:1.1; margin:.2em 0 }
+h2{ font-size:28px; margin:0 0 16px }
+.lead{ font-size:18px; color:var(--muted) }
+.eyebrow{
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); font-size:13px;
+}
+
+/* =========================
+   HERO (two-column split)
+========================= */
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr; /* text | photo */
+  gap:32px;
+  align-items:center;
+  max-width:var(--max);
+  margin:0 auto;
+  padding:64px 20px;
+}
+
+/* hero text */
+.eyebrow{ color:var(--muted); font-weight:700; margin:0 0 6px }
+.display{ font-size:56px; line-height:1.05; margin:0 0 10px }
+
+/* gradient accent text (mostly purple with aqua tail) */
+.display .accent{
+  background: linear-gradient(90deg,
+    #7c3aed 0%,
+    #8b5cf6 60%,
+    #22d3ee 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead{ color:var(--muted); max-width:52ch; margin:0 }
+
+/* =========================
+   HERO BUTTONS
+========================= */
+.actions{ display:flex; gap:12px; margin:18px 0 8px }
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  color:inherit;
+  text-decoration:none;
+  transition: all 0.25s ease;
+}
+
+/* primary button (Hire me) — gradient */
+.btn.primary{
+  background: linear-gradient(90deg,
+    #7c3aed 0%,
+    #8b5cf6 60%,
+    #22d3ee 100%
+  );
+  border: none;
+  color:#fff;
+  font-weight:700;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+}
+.btn.primary:hover{
+  box-shadow: 0 6px 18px rgba(34, 211, 238, 0.55);
+  transform: translateY(-2px);
+}
+
+/* ghost button */
+.btn.ghost{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+.btn.small{ padding:8px 12px; font-size:14px }
+.btn.wide{ display:block; text-align:center; width:100% }
+
+/* =========================
+   HERO SOCIALS
+========================= */
+.socials{ display:flex; gap:10px; margin-top:8px }
+.icon-btn{
+  width:40px; height:40px; border-radius:999px;
+  display:grid; place-items:center;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.02);
+  text-decoration:none; color:inherit; font-weight:700;
+}
+.icon-btn:hover{ border-color:#8b5cf6; color:#8b5cf6 }
+
+/* =========================
+   HERO PHOTO (right)
+========================= */
+.hero-photo{ display:flex; justify-content:flex-end }
+.hero-photo img{
+  width:100%; max-width:340px;   /* control image size */
+  border-radius:24px;
+  object-fit:cover;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+/* =========================
+   SECTIONS & CARDS
+========================= */
+.section{ padding:72px 0 }
+.content > section,
+.list-cards > li > article{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  margin-bottom:20px;
+}
+
+/* projects cards */
+.list-cards{ list-style:none; padding:0; margin:0; display:grid; gap:16px }
+.card{ border:1px solid var(--line); border-radius:14px; padding:16px; background:var(--panel) }
+.card h3{ margin:0 0 6px; font-size:18px }
+@media (min-width: 800px){
+  .cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px }
+}
+
+/* =========================
+   CONTACT LAYOUT
+========================= */
+.contact-grid{ display:grid; grid-template-columns:1fr; gap:24px }
+.contact .form{ display:grid; gap:12px }
+.form input, .form textarea{
+  background:transparent; border:1px solid var(--line); color:var(--ink);
+  padding:12px 14px; border-radius:12px; outline:none;
+}
+.form input:focus, .form textarea:focus{ border-color:var(--brand) }
+.contact-side{ display:grid; gap:12px }
+@media (min-width: 900px){
+  .contact-grid{ grid-template-columns: 2fr 1fr }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 800px){
+  .hero-grid{ grid-template-columns:1fr; text-align:center }
+  .hero-photo{ justify-content:center; margin-top:20px }
+  .actions, .socials{ justify-content:center }
+  .display{ font-size:42px } /* friendlier on phones */
+}
+
+/* ===== Keep hero two-column on smaller screens (fluid) ===== */
+.hero-grid{
+  display:grid;
+  grid-template-columns: minmax(420px,1fr) minmax(220px, 28vw) !important; /* text | photo */
+  gap:32px;
+  align-items:start;
+  padding-bottom:20px;
+}
+.hero-photo{ display:flex; justify-content:flex-end; align-self:start }
+.hero-photo img{
+  width:100%;
+  max-width:340px;
+  aspect-ratio:1 / 1;
+  object-fit:cover; object-position:center;
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+/* Let the image shrink as the viewport narrows, but keep two columns */
+@media (max-width: 1200px){
+  .hero-grid{ grid-template-columns: minmax(380px,1fr) minmax(220px, 26vw) !important; }
+}
+@media (max-width: 1024px){
+  .hero-grid{ grid-template-columns: minmax(360px,1fr) minmax(200px, 24vw) !important; }
+  .display{ font-size:48px; }
+}
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns: minmax(320px,1fr) minmax(180px, 24vw) !important; }
+  .display{ font-size:44px; }
+  .lead{ font-size:16px; }
+}
+
+/* Only at very small widths do we stack (to avoid overflow) */
+@media (max-width: 640px){
+  .hero-grid{ grid-template-columns: 1fr !important; text-align:center; gap:20px; }
+  .hero-photo{ justify-content:center; margin-top:16px }
+  .hero-photo img{ max-width:220px; }
+  .actions, .socials{ justify-content:center }
+}
+
+/* === FINAL OVERRIDES === */
+
+/* Keep ALL buttons aqua with a soft glow (lighting) */
+.btn,
+.btn.primary,
+.btn.ghost {
+  background: #14c6de !important;         /* aqua */
+  border: none !important;
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: 0 10px 28px rgba(20, 198, 222, 0.35) !important; /* lighting under button */
+  transition: transform .2s ease, box-shadow .2s ease !important;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(20, 198, 222, 0.45) !important; /* brighter on hover */
+}
+
+/* Sticky section bars: translucent gradient + white text */
+.content section h2.sticky-h2 {
+  position: sticky;
+  top: calc(64px + 10px);                   /* header height + small gap */
+  z-index: 2;
+  display: block;
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  /* force gradient; prevent fallback to panel */
+  background-image: linear-gradient(
+    90deg,
+    rgba(124, 58, 237, 0.90) 0%,
+    rgba(139, 92, 246, 0.90) 60%,
+    rgba(34, 211, 238, 0.90) 100%
+  ) !important;
+  background-color: transparent !important;
+  color: #fff !important;
+
+  /* visual polish */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  border: none !important;
+  mix-blend-mode: normal;       /* avoid darkening with parent */
+  isolation: isolate;           /* keep effects from blending with container */
+}
+
+/* Subtitle under sticky bar stays light on both themes */
+.content section .sticky-sub {
+  margin: 6px 0 14px;
+  color: #fff !important;
+  opacity: .85;
+}
+
+/* Ensure anchor jumps land below sticky header */
+html { scroll-padding-top: calc(64px + 10px) !important; }
+[id] { scroll-margin-top: calc(64px + 10px) !important; }
+
+/* Slightly taller header on narrow screens? adjust offsets */
+@media (max-width: 900px) {
+  .content section h2.sticky-h2 { top: calc(72px + 10px); }
+  html { scroll-padding-top: calc(72px + 10px) !important; }
+  [id] { scroll-margin-top: calc(72px + 10px) !important; }
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn.primary {
+  background: #14c6de;  /* aqua */
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(20, 198, 222, 0.5); /* glowing light */
+  transition: all 0.25s ease;
+}
+.btn.primary:hover {
+  box-shadow: 0 6px 18px rgba(20, 198, 222, 0.65);
+  transform: translateY(-2px);
+}
+
+/* White ghost buttons (like Download CV) stay unchanged */
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+/* =========================
+   STICKY SECTION HEADERS
+========================= */
+.section-header {
+  position: sticky;
+  top: 64px; /* below nav */
+  z-index: 40;
+  background: linear-gradient(90deg,
+    rgba(124, 58, 237, 0.65) 0%,   /* purple w/ transparency */
+    rgba(139, 92, 246, 0.65) 50%, 
+    rgba(34, 211, 238, 0.65) 100%  /* aqua w/ transparency */
+  );
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+/* ---------- RESTORE WHITE PILL ON THE RIGHT ---------- */
+/* Force only ghost buttons (e.g., the email pill) to be white */
+a.btn.ghost,
+.actions a.btn.ghost {
+  background: #ffffff !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08) !important;
+}
+.actions a.btn.ghost:hover {
+  box-shadow: 0 10px 26px rgba(0,0,0,0.12) !important;
+  transform: translateY(-2px);
+}
+
+/* Keep ALL other buttons aqua with glow */
+a.btn:not(.ghost),
+.actions a.btn:not(.ghost) {
+  background: #14c6de !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 12px 30px rgba(20,198,222,0.45) !important;
+}
+
+/* ---------- LIQUID GLASS STICKY SECTION BARS ---------- */
+.content section h2.sticky-h2 {
+  position: sticky;
+  top: calc(64px + 10px);
+  z-index: 3;
+  margin: 0 0 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
+
+  /* translucent gradient + blur = liquid glass */
+  background: linear-gradient(
+    90deg,
+    rgba(124, 58, 237, 0.55) 0%,
+    rgba(139, 92, 246, 0.55) 55%,
+    rgba(34, 211, 238, 0.55) 100%
+  ) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+
+  /* white text + glass chrome */
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.35) !important;       /* glass edge */
+  box-shadow:
+    0 10px 24px rgba(31,41,55,0.16),
+    inset 0 1px 0 rgba(255,255,255,0.28) !important;          /* inner sheen */
+  background-clip: padding-box;
+  isolation: isolate; /* prevent blending with parent */
+}
+
+/* Subtitle under*
+
+
+
