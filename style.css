@@ -279,13 +279,13 @@ img { max-width: 100%; display: block; }
 }
 
 /* =========================================================
-   GALLERY — horizontal timeline
+   GALLERY — vertical timeline, newest first, alternating sides
    ========================================================= */
 
 .gallery__head {
   max-width: 60rem;
   margin: 0 auto;
-  padding: 5rem 1.5rem 2.5rem;
+  padding: 5rem 1.5rem 1rem;
 }
 .gallery__head h1 { font-size: clamp(2.25rem, 5.5vw, 3.5rem); }
 .gallery__head p {
@@ -295,84 +295,78 @@ img { max-width: 100%; display: block; }
   font-size: 1.0625rem;
 }
 
-.rail {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x proximity;
-  padding: 1rem 0 2.5rem;
-  -webkit-overflow-scrolling: touch;
-}
-.rail::-webkit-scrollbar { height: 8px; }
-.rail::-webkit-scrollbar-track { background: transparent; }
-.rail::-webkit-scrollbar-thumb {
-  background: rgba(10, 42, 51, .16);
-  border-radius: 999px;
-}
-
-.track {
+.timeline {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 3.75rem 1.5rem 0;
-  width: max-content;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 4rem;
 }
 
 /* the signature element: a glowing axis running the length of the timeline */
-.track::before {
+.timeline::before {
   content: "";
   position: absolute;
-  left: 1.5rem;
-  right: 1.5rem;
-  top: 3.25rem;
-  height: 2px;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
   border-radius: 2px;
-  background: linear-gradient(90deg,
+  background: linear-gradient(180deg,
     rgba(18, 184, 201, 0) 0%,
-    var(--aqua) 6%,
-    var(--spring) 62%,
+    var(--aqua) 5%,
+    var(--spring) 88%,
     rgba(111, 216, 168, 0) 100%);
-  box-shadow: 0 0 14px rgba(18, 184, 201, .45);
+  box-shadow: 0 0 14px rgba(18, 184, 201, .4);
 }
 
 .node {
   position: relative;
-  flex: 0 0 20rem;
-  scroll-snap-align: center;
-  padding-top: 1.9rem;
+  width: calc(50% - 3rem);
+  margin-bottom: 3rem;
 }
+.node:last-child { margin-bottom: 0; }
 
-.node__year {
-  position: absolute;
-  top: -1.9rem;
-  left: 0;
-  font-size: .8125rem;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
+.node--l { margin-right: auto; }
+.node--r { margin-left: auto; }
 
 .node__dot {
   position: absolute;
-  top: -0.375rem;
-  left: .35rem;
-  width: 11px;
-  height: 11px;
+  top: 1.85rem;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background: #fff;
   border: 2px solid var(--aqua);
   box-shadow: 0 0 0 4px rgba(18, 184, 201, .14);
 }
+.node--l .node__dot { right: calc(-3rem - 6.5px); }
+.node--r .node__dot { left: calc(-3rem - 6.5px); }
+
+/* date sits across the axis from its card, clear of the line */
+.node__year {
+  position: absolute;
+  top: 1.6rem;
+  margin: 0;
+  font-size: .875rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.node--l .node__year { left: calc(100% + 4.25rem); }
+.node--r .node__year { right: calc(100% + 4.25rem); }
 
 .card {
   display: block;
-  height: 100%;
   padding: 1.5rem 1.5rem 1.6rem;
   text-decoration: none;
   color: inherit;
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.card:hover { transform: translateY(-4px); box-shadow: 0 30px 54px -28px rgba(10, 42, 51, .45), var(--sheen); }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 54px -28px rgba(10, 42, 51, .45), var(--sheen);
+}
 
 .card__kind {
   display: inline-block;
@@ -396,20 +390,7 @@ img { max-width: 100%; display: block; }
 
 .card__org { margin: 0 0 .75rem; font-size: .875rem; color: var(--muted); }
 .card__blurb { margin: 0; font-size: .9375rem; color: var(--muted); }
-
-.card__more {
-  margin-top: 1rem;
-  font-size: .875rem;
-  color: var(--link);
-}
-
-.rail__hint {
-  max-width: 60rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  font-size: .875rem;
-  color: var(--muted);
-}
+.card__more { margin-top: 1rem; font-size: .875rem; color: var(--link); }
 
 /* =========================================================
    DETAIL OVERLAYS (:target, no JS)
@@ -637,12 +618,38 @@ img { max-width: 100%; display: block; }
   .nav__links a { font-size: .875rem; }
 
   .page { padding: 3rem 1.25rem 4rem; }
-  .node { flex: 0 0 78vw; }
-  .track { gap: 1rem; padding-left: 1.25rem; padding-right: 1.25rem; }
-  .track::before { left: 1.25rem; right: 1.25rem; }
   .detail__panel { padding: 2rem 1.25rem; }
   .now dl { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
   .now dt { margin-top: .6rem; }
+}
+
+@media (max-width: 52rem) {
+  .timeline { padding: 2.5rem 1.25rem 3rem; }
+  .timeline::before { left: 7px; transform: none; }
+
+  .node,
+  .node--l,
+  .node--r {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .node--l .node__dot,
+  .node--r .node__dot { left: 1px; right: auto; top: 2.6rem; }
+
+  .node__year,
+  .node--l .node__year,
+  .node--r .node__year {
+    position: static;
+    left: auto;
+    right: auto;
+    display: block;
+    margin: 0 0 .5rem;
+    text-align: left;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -650,6 +657,5 @@ img { max-width: 100%; display: block; }
   .deck__viewport { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
 }
-
 
 
