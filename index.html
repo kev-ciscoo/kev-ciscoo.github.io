@@ -1,245 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kevin Francisco — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Inline hero styling (you can merge into style.css later) -->
-  <style>
-    :root{
-      --accent:#14c6de;
-      --header-h:64px;   /* height of your site header */
-      --sticky-pad:10px; /* space under the header */
-    }
-
-    /* smooth scroll & correct landing below the fixed header */
-    html{
-      scroll-behavior:smooth;
-      scroll-padding-top: calc(var(--header-h) + var(--sticky-pad));
-    }
-    [id]{ scroll-margin-top: calc(var(--header-h) + var(--sticky-pad)); }
-
-    /* ===== sticky section heading (same pattern as project pages) ===== */
-    .sticky-h2{
-      position: sticky;
-      top: calc(var(--header-h) + var(--sticky-pad));
-      z-index: 2;
-      margin: 0 0 12px;
-      padding: 10px 12px;
-      background: linear-gradient(to bottom, rgba(11,13,16,.85), rgba(11,13,16,.70));
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 12px;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      font-size: clamp(20px, 2.6vw, 26px);
-    }
-    .sticky-sub{
-      margin: 6px 0 14px;
-      color: var(--muted, #a5b0c2);
-    }
-
-    /* HERO split grid */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 32px;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 64px 20px;
-    }
-    .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: 13px;
-      margin: 0 0 6px;
-    }
-    .display {
-      font-size: 56px;
-      line-height: 1.05;
-      margin: 0 0 10px;
-    }
-    .display .accent { color: var(--accent); }
-    .lead {
-      color: var(--muted, #a5b0c2);
-      font-size: 18px;
-      max-width: 52ch;
-      margin: 0;
-    }
-    .actions { display: flex; gap: 12px; margin: 18px 0 8px; }
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--line, #1f2937);
-      color: inherit;
-      text-decoration: none;
-    }
-    .btn.primary {
-      background: var(--accent);
-      border-color: transparent;
-      color: #fff;
-      font-weight: 700;
-    }
-    .btn.ghost { background: transparent; }
-    .socials { display: flex; gap: 10px; margin-top: 8px; }
-    .icon-btn {
-      width: 40px; height: 40px; border-radius: 999px;
-      display: grid; place-items: center;
-      border: 1px solid var(--line, #1f2937);
-      background: rgba(255,255,255,0.02);
-      text-decoration: none;
-      color: inherit; font-weight: 700;
-    }
-    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Photo */
-    .hero-photo { margin: 0; display: block; }
-    .hero-photo img {
-      width: 100%;
-      border-radius: 24px;
-      object-fit: cover;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
-
-    /* Sections styled as cards */
-    .content > section,
-    .list-cards > li > article {
-      background: var(--panel, #111827);
-      border: 1px solid var(--line, #1f2937);
-      border-radius: 16px;
-      padding: 18px 20px;
-      margin-bottom: 20px;
-    }
-
-    @media (max-width: 900px) {
-      :root{ --header-h:72px; } /* if your header gets taller on mobile */
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-photo { margin-top: 20px; }
-      .actions, .socials { justify-content: center; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kevin Francisco — Product Manager</title>
+<meta name="description" content="Kevin Francisco, product manager. Product Strategy at Disney, previously product management and data science at NBCUniversal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Product Manager</h1>
-      <nav aria-label="Primary">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="project1.html">Project 1</a>
-        <a href="project2.html">Project 2</a>
-      </nav>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="shell">
+
+  <header class="rail">
+    <img class="rail__portrait" src="images/profile.jpg" alt="Kevin Francisco">
+    <p class="rail__name">Kevin Francisco</p>
+    <p class="rail__role">Product Manager</p>
+
+    <nav class="rail__nav" aria-label="Sections">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+    </nav>
+
+    <div class="rail__contact">
+      <a href="mailto:junior.cisco11@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/kevin-francisco-engineer">LinkedIn</a>
+      <a href="slides/Kevin_Francisco_PM_Final1.pdf">Resume</a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="home" class="hero-grid">
-    <section class="hero-text">
-      <p class="eyebrow">Hi, There!</p>
-      <h1 class="display">I'm <span class="accent">Kevin</span></h1>
-      <p class="lead">
-        just a guy who loves diving into the mindset of the user and understanding their experiences — always focused on building the perfect product for them
-      </p>
-      <nav class="actions" aria-label="Primary actions">
-        <a class="btn primary" href="mailto:junior.cisco11@gmail.com">Contact Me</a>
-        <a class="btn ghost" href="slides/Kevin_Francisco_PM_Final1.pdf" target="_blank" rel="noopener">
-  View Resume
-</a>
+  <main id="main">
 
-      </nav>
-      <nav class="socials" aria-label="Social links">
-        
-        <a class="icon-btn" href="https://www.linkedin.com/in/kevin-francisco-engineer" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-        
-      </nav>
-    </section>
-    <figure class="hero-photo">
-      <img src="images/profile.jpg" alt="Professional headshot of Kevin Francisco" />
-    </figure>
-  </section>
+    <div class="hero">
+      <h1>I build products around what people actually do, not what we assume they do.</h1>
+      <p>Product Strategy intern at Disney. Previously product management and data science at NBCUniversal, and an APM at an AI startup. Currently building two products of my own.</p>
+    </div>
 
-  <!-- MAIN -->
-  <main class="container content" role="main">
-    <!-- Education -->
-    <section id="education" aria-labelledby="education-heading">
-      <h2 id="education-heading" class="sticky-h2">Education</h2>
-      <p class="sticky-sub">University & degree details.</p>
-      <article>
-        <p><strong>University of Central Florida</strong></p>
-        <p>B.S. Information Technology, College of Engineering and Computer Science</p>
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+
+      <article class="entry">
+        <h3 class="entry__title">Product Strategy Intern <span class="entry__org">The Walt Disney Company</span></h3>
+        <p class="entry__when">Jan 2026 – Present</p>
+        <p class="entry__body">Authored the product requirements for a Streamlit forecasting tool covering 40+ characters across 4 parks, gathered across a team of eight and built through AI-assisted development, cutting six hours of analysis per quarter. Also shaped strategic vision with runDisney across three race formats, turning market research and partner feedback into a race roadmap.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">User Experience Strategy Intern <span class="entry__org">The Walt Disney Company</span></h3>
+        <p class="entry__when">2026</p>
+        <p class="entry__body">Found a 0-to-1 monetization opportunity across 25 resorts by analyzing 220K guest passes and discovering 30% were being used for off-label access, then scoped a paid concept for Resort Ops. Separately queried 1M+ call records in SQL and Snowflake to trace the root causes of guest call volume, translating the top three pain points into CX roadmap items and cutting report turnaround by 65%.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">Associate Product Manager Intern <span class="entry__org">Kogna.IO</span></h3>
+        <p class="entry__when">Sep – Dec 2025</p>
+        <p class="entry__body">Launched Nodes, a modular workspace, working across engineering and growth. Developed features through user stories and Figma prototypes, driving 60% of accounts to connect two or more nodes within three months.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">Product Manager Intern <span class="entry__org">NBCUniversal</span></h3>
+        <p class="entry__when">Aug 2024 – Aug 2025</p>
+        <p class="entry__body">Scoped the MVP for Fandango FanClub by analyzing competitor offerings and aligning OKRs with marketing, launching a paid membership into an $8.7B market. Led user research with 1,000+ participants to scope a mobile redesign for SportsEngine, a youth sports platform with 3M users, carrying it from discovery to launch and driving adoption among 150K+ users.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">Data Science Intern <span class="entry__org">NBCUniversal</span></h3>
+        <p class="entry__when">Aug 2024 – Aug 2025</p>
+        <p class="entry__body">Drove feature optimization and dynamic thresholding for machine learning models, partnering with engineering through each stage of the development lifecycle to deliver a 15% improvement in forecast accuracy. Automated reporting and real-time prediction pipelines across 3,500+ facilities in Python, taking reporting from a 14-day cycle to live dashboard visibility.</p>
+      </article>
+
+      <article class="entry">
+        <h3 class="entry__title">Digital Product Strategist <span class="entry__org">Independent</span></h3>
+        <p class="entry__when">2023</p>
+        <p class="entry__body">Built and ran the content strategy for a social media brand, growing it to 30,000 followers.</p>
       </article>
     </section>
 
-    <!-- Work Experience -->
-    <section id="experience" aria-labelledby="experience-heading">
-      <h2 id="experience-heading" class="sticky-h2">Work Experience</h2>
-      <p class="sticky-sub">Internships and roles I've held.</p>
-      <section class="timeline">
-        <article class="timeline-item">
-          <h3>Technical Product Manager Intern — NBCUniversal</h3>
-          <p>Part of decision science team within GolfNow ML organization.</p>
-        </article>
-        <article class="timeline-item">
-          <h3>Product Manager Intern — NBCUniversal</h3>
-          <p>SportsEngine &amp; Fandango teams with a focus on B2C &amp; B2B model.</p>
-        </article>
-        <article class="timeline-item">
-          <h3>Digital Product Strategist — Entrepreneur</h3>
-          <p>Developed digital strategy that led to 30k followers for social media content brand.</p>
-        </article>
-      </section>
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+
+      <article class="project">
+        <div class="project__head">
+          <h3 class="project__name">Hindsight</h3>
+          <span class="tag">In development</span>
+        </div>
+        <p>A regret database for travelers. People log what they wish they had done differently after a trip, entries cluster by how many others said the same thing, and the next traveler reads the pattern before they go.</p>
+      </article>
+
+      <article class="project">
+        <div class="project__head">
+          <h3 class="project__name">Arrival</h3>
+          <span class="tag">In development</span>
+        </div>
+        <p>Trip-scoped language learning. Give it your destination, how long you have, and what you plan to do there, and it builds a plan around the words and situations you will actually hit. Not a whole language, just the useful part.</p>
+      </article>
+
+      <article class="project">
+        <div class="project__head">
+          <h3 class="project__name"><a href="project1.html">Loop @ UCF</a></h3>
+          <span class="tag">President, 2025</span>
+        </div>
+        <p>Founded UCF's first student organization for product management. Designed leadership development programming on product lifecycle, user research, and AI tools, and spearheaded the club website, translating Figma mockups, CMS content, and API data into Jira-managed sprints.</p>
+        <ul class="stats plain">
+          <li><div>60+<span>Students coached</span></div></li>
+          <li><div>35+<span>Members</span></div></li>
+          <li><div>5+<span>Industry speakers</span></div></li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div class="project__head">
+          <h3 class="project__name"><a href="project2.html">Disney Case Competition</a></h3>
+        </div>
+        <p>Reimagined guest check-in across digital and in-person touchpoints, sizing the friction and proposing a solution with measurable outcomes. Slides and the full presentation are on the project page.</p>
+      </article>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" class="sticky-h2">Projects</h2>
-      <p class="sticky-sub">Selected work — more on project pages.</p>
-      <ul class="list-cards">
-        <li>
-          <article>
-            <h3><a href="project1.html">Loop - Product Management Student Organization</a></h3>
-            <p>Founded Loop, UCF's first student org dedicated to product management, building a pipeline of PM talent.</p>
-          </article>
-        </li>
-        <li>
-          <article>
-            <h3><a href="project2.html">Disney Case Study</a></h3>
-            <p>Reimagined digital/in-person guest check-in to reduce friction and boost satisfaction.</p>
-          </article>
-        </li>
-      </ul>
+    <section class="section" id="skills">
+      <h2>Skills &amp; Education</h2>
+
+      <dl class="cluster">
+        <dt>Product</dt>
+        <dd>Product strategy, PRD writing, user research, roadmapping, OKRs</dd>
+      </dl>
+      <dl class="cluster">
+        <dt>Data</dt>
+        <dd>SQL, Python, Snowflake, Tableau, Excel, machine learning</dd>
+      </dl>
+      <dl class="cluster">
+        <dt>Tools</dt>
+        <dd>Jira, Figma, Streamlit, Salesforce, Canva</dd>
+      </dl>
+      <dl class="cluster">
+        <dt>Education</dt>
+        <dd>B.S. Information Technology, University of Central Florida, College of Engineering and Computer Science. December 2025.</dd>
+      </dl>
+      <dl class="cluster">
+        <dt>Coursework</dt>
+        <dd>Data Structures and Algorithms, Machine Learning, Object-Oriented Programming, Robot Vision, Web Development, Economics, Statistics</dd>
+      </dl>
+      <dl class="cluster">
+        <dt>Honors</dt>
+        <dd>Dean's List, President's List</dd>
+      </dl>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading" class="sticky-h2">Skills</h2>
-      <p class="sticky-sub">Tools & domains I use most.</p>
-      <ul class="tags placeholder">
-        <li>HTML</li><li>CSS</li><li>Python</li><li>SQL</li><li>Product Strategy</li>
-      </ul>
-    </section>
-
-    <!-- Awards -->
-    <section id="awards" aria-labelledby="awards-heading">
-      <h2 id="awards-heading" class="sticky-h2">Awards &amp; Honors</h2>
-      <p class="sticky-sub">Recognition for academic & project work.</p>
-      <ul class="list-cards">
-        <li class="placeholder">Dean's List, President's List.</li>
-      </ul>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Kevin Francisco</p>
-    </div>
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+  <footer class="foot">
+    <p>© 2026 Kevin Francisco</p>
   </footer>
+
+</div>
+
 </body>
 </html>
