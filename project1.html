@@ -1,222 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project 1 — Founding Loop @ UCF | Kevin Francisco</title>
-  <link rel="stylesheet" href="style.css" />
-
-  <style>
-    :root{
-      --accent:#14c6de;
-      --header-h:64px;   /* height of your site header */
-      --sticky-pad:10px; /* space under the header */
-    }
-
-    /* Smooth anchor landings below the site header + sticky h2 */
-    html{
-      scroll-behavior:smooth;
-      scroll-padding-top: calc(var(--header-h) + var(--sticky-pad));
-    }
-    [id]{ scroll-margin-top: calc(var(--header-h) + var(--sticky-pad)); }
-
-    /* ================= hero grid (same system as index) ================= */
-    .hero-grid{
-      display:grid; grid-template-columns:1.2fr .8fr; gap:32px; align-items:center;
-      max-width:1100px; margin:0 auto; padding:64px 20px;
-    }
-    .eyebrow{ color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:13px; margin:0 0 6px; }
-    .display{ font-size:56px; line-height:1.05; margin:0 0 10px; }
-    .display .accent{ color:var(--accent); }
-    .lead{ color:var(--muted, #a5b0c2); font-size:18px; max-width:60ch; margin:0; }
-
-    .actions{ display:flex; gap:12px; margin:18px 0 8px; }
-    .btn{ display:inline-block; padding:12px 18px; border-radius:999px; border:1px solid var(--line, #1f2937); color:inherit; text-decoration:none; }
-    .btn.primary{ background:var(--accent); border-color:transparent; color:#001018; font-weight:700; }
-    .btn.ghost{ background:transparent; }
-    .small{ color:var(--muted, #a5b0c2); font-size:14px; }
-
-    .hero-photo{ margin:0; display:block; }
-    .hero-photo img{ width:100%; border-radius:24px; object-fit:cover; box-shadow:0 20px 60px rgba(0,0,0,.35); }
-
-    /* ================= cards / content ================= */
-    .content > section,
-    .card{
-      background:var(--panel, #111827);
-      border:1px solid var(--line, #1f2937);
-      border-radius:16px;
-      padding:18px 20px;
-      margin-bottom:20px;
-    }
-    .grid-3{ display:grid; grid-template-columns:1fr; gap:16px; }
-    @media (min-width:720px){ .grid-3{ grid-template-columns:repeat(3,1fr); } }
-
-    .impact{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-    @media (min-width:720px){ .impact{ grid-template-columns:repeat(4,1fr); } }
-    .impact .num{ font-weight:800; font-size:28px; }
-    .impact .label{ color:var(--muted, #a5b0c2); }
-
-    .timeline{ border-left:2px solid var(--line, #1f2937); padding-left:14px; margin:8px 0 0; }
-    .timeline .t{ margin:8px 0; }
-
-    /* ================= per-section sticky H2 =================
-       These headings pin just under your OG header and get pushed
-       away by the next section (classic sticky behavior).
-    */
-    .sticky-h2{
-      position: sticky;
-      top: calc(var(--header-h) + var(--sticky-pad));
-      z-index: 2;
-      margin: 0 0 12px;
-      padding: 10px 12px;
-      background: linear-gradient(to bottom, rgba(11,13,16,.85), rgba(11,13,16,.70));
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 12px;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      font-size: clamp(20px, 2.6vw, 26px);
-    }
-    .sticky-sub{
-      margin: 6px 0 14px;
-      color: var(--muted, #a5b0c2);
-    }
-
-    @media (max-width:900px){
-      :root{ --header-h:72px; } /* if your header is taller on mobile */
-      .hero-grid{ grid-template-columns:1fr; text-align:center; }
-      .hero-photo{ margin-top:20px; }
-      .actions{ justify-content:center; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loop @ UCF — Kevin Francisco</title>
+<meta name="description" content="Founding Loop @ UCF, the university's first student organization for product management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ===== OG HEADER (unchanged) ===== -->
-  <header class="site-header">
-    <div class="container">
-      <h1>Product Manager</h1>
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="project1.html" aria-current="page">Project 1</a>
-        <a href="project2.html">Project 2</a>
-      </nav>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="shell">
+
+  <header class="rail">
+    <a class="rail__back" href="index.html">← Kevin Francisco</a>
+    <p class="rail__name">Loop @ UCF</p>
+    <p class="rail__role">President, 2025</p>
+
+    <nav class="rail__nav" aria-label="Sections">
+      <a href="#role">My role</a>
+      <a href="#programs">Programs</a>
+      <a href="#impact">Impact</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="rail__contact">
+      <a href="mailto:loopatucf@gmail.com">loopatucf@gmail.com</a>
+      <a href="https://www.linkedin.com/company/loopatucf/" target="_blank" rel="noopener">Loop on LinkedIn</a>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section id="home" class="hero-grid">
-    <section class="hero-text">
-      <p class="eyebrow">Student Organization • UCF</p>
-      <h1 class="display">Founding <span class="accent">Loop @ UCF</span></h1>
-      <p class="lead">
-        Founder & President of Loop @ UCF, a student organization I created with the purpose of advancing Product Management among students by building a strong talent pipeline from UCF to the tech industry through workshops, case competitions, and networking events!
-      </p>
-      <nav class="actions" aria-label="Primary actions">
-        <a class="btn primary" href="https://www.linkedin.com/company/loopatucf/" target="_blank" rel="noopener">Loop on LinkedIn</a>
-        <a class="btn ghost" href="mailto:loopatucf@gmail.com">loopatucf@gmail.com</a>
-      </nav>
-      
-    </section>
-    <figure class="hero-photo">
-      <img src="images/Loop.jpeg" alt="Loop @ UCF logo" />
+  <main id="main">
+
+    <div class="hero">
+      <p class="hero__context">Student organization, University of Central Florida</p>
+      <h1>I started UCF's first student organization for product management.</h1>
+      <p>Loop exists to build a talent pipeline from campus into PM roles, through workshops, case competitions, and speaker sessions. I founded it, recruited the officer team, and ran it as president.</p>
+    </div>
+
+    <figure class="masthead">
+      <img src="images/Loop.jpeg" alt="Loop @ UCF logo">
     </figure>
-  </section>
 
-  <!-- ===== MAIN ===== -->
-  <main class="container content" role="main">
-    <!-- My Role (sticky title) -->
-    <section id="role" aria-labelledby="role-heading">
-      <h2 id="role-heading" class="sticky-h2">My Role as Founder &amp; President</h2>
-      <p class="sticky-sub">How I designed the org, recruited leaders, and delivered outcomes.</p>
+    <section class="section" id="role">
+      <h2>My role</h2>
+      <p class="section__note">How I designed the org, recruited leaders, and delivered outcomes.</p>
 
-      <article class="card">
-        <div class="grid-3">
-          <section>
-            <h3>Vision &amp; Strategy</h3>
-            <p>Identified the gap in PM education on campus and led multiple projects for career development for students.</p>
-            <div class="timeline">
-              
-              <div class="t"><strong>Program design:</strong> weekly workshops + project sprints + speaker series.</div>
-            </div>
-          </section>
-          <section>
-            <h3>Leadership &amp; Ops</h3>
-            <p>Recruited officers, defined roles, managed KnightConnect registration, branding, and comms.</p>
-            <div class="timeline">
-              <div class="t"><strong>Team:</strong> VP, Product Dev, Ideathon Coordinator, Technical Dev, Treasurer, Secretary.</div>
-              
-            </div>
-          </section>
-          <section>
-            <h3>Outcomes</h3>
-            <p>Scaled membership and delivered value-add programming measured by outcomes.</p>
-            <div class="timeline">
-              <div class="t"><strong>35+ members</strong> joined in the first term.</div>
-              <div class="t"><strong>10+ workshops</strong> and <strong>3 case comps</strong> hosted.</div>
-            </div>
-          </section>
-        </div>
+      <article class="block">
+        <h3>Vision and strategy</h3>
+        <p>Identified the gap in PM education on campus and led career development projects to close it.</p>
+        <p><strong>Program design:</strong> weekly workshops, project sprints, and a speaker series.</p>
+      </article>
+
+      <article class="block">
+        <h3>Leadership and operations</h3>
+        <p>Recruited officers, defined roles, and managed KnightConnect registration, branding, and comms.</p>
+        <p><strong>Team:</strong> VP, Product Dev, Ideathon Coordinator, Technical Dev, Treasurer, Secretary.</p>
+      </article>
+
+      <article class="block">
+        <h3>Programming and outcomes</h3>
+        <p>Designed leadership development programs on product lifecycle, user research, and AI tools, and scaled membership on the strength of what students walked away with.</p>
+        <ul class="stats plain">
+          <li><div>60+<span>Students coached</span></div></li>
+          <li><div>35+<span>Members</span></div></li>
+          <li><div>5+<span>Industry speakers</span></div></li>
+        </ul>
+      </article>
+
+      <article class="block">
+        <h3>Shipping the club website</h3>
+        <p>Spearheaded software development of the Loop site, translating Figma mockups, CMS content, and API data into Jira-managed sprints and scoping level of effort to ship a platform serving the membership.</p>
       </article>
     </section>
 
-    <!-- Programs (sticky title) -->
-    <section id="programs" aria-labelledby="programs-heading">
-      <h2 id="programs-heading" class="sticky-h2">Programs I Built</h2>
-      <p class="sticky-sub">Designed to create artifacts students can showcase.</p>
+    <section class="section" id="programs">
+      <h2>Programs I built</h2>
+      <p class="section__note">Designed so students leave with artifacts they can show a recruiter.</p>
 
-      <div class="grid-3">
-        <article><h3>Workshops</h3><p>Product sense drills, PRD writing, and resume/portfolio labs.</p></article>
-        <article><h3>Speaker Sessions</h3><p>Talks from PM/Design/Data pros (NBCU, Disney, Google).</p></article>
-        <article><h3>Mentorship</h3><p>Peer reviews, mock interviews, and artifact critiques.</p></article>
-        
-      </div>
+      <dl class="cluster">
+        <dt>Workshops</dt>
+        <dd>Product sense drills, PRD writing, and resume and portfolio labs.</dd>
+      </dl>
+      <dl class="cluster">
+        <dt>Speaker sessions</dt>
+        <dd>Talks from five or more product, design, and data professionals at NBCUniversal, Disney, and Google.</dd>
+      </dl>
+      <dl class="cluster">
+        <dt>Mentorship</dt>
+        <dd>Peer reviews, mock interviews, and artifact critiques.</dd>
+      </dl>
     </section>
 
-    <!-- Impact (sticky title) -->
-    <section id="impact" aria-labelledby="impact-heading">
-      <h2 id="impact-heading" class="sticky-h2">Impact</h2>
-      <p class="sticky-sub">Metrics I tracked to keep us outcome-focused.</p>
+    <section class="section" id="faq">
+      <h2>Questions students ask</h2>
 
-      <article class="card">
-        <div class="impact">
-          <div><div class="num">35+</div><div class="label">Members</div></div>
-          <div><div class="num">10+</div><div class="label">Workshops / term</div></div>
-          <div><div class="num">3</div><div class="label">Case comps</div></div>
-          
-        </div>
-      </article>
-      
+      <details>
+        <summary>Do I need prior experience?</summary>
+        <p>No. We meet you where you are and help you build artifacts.</p>
+      </details>
+      <details>
+        <summary>What is the time commitment?</summary>
+        <p>One to two events a week in peak weeks. Project teams set their own cadence.</p>
+      </details>
+      <details>
+        <summary>How do I get updates?</summary>
+        <p>Email <a href="mailto:loopatucf@gmail.com">loopatucf@gmail.com</a> and follow <a href="https://www.linkedin.com/company/loopatucf/" target="_blank" rel="noopener">Loop on LinkedIn</a>.</p>
+      </details>
     </section>
 
-    <!-- FAQ (sticky title) -->
-    <section id="faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading" class="sticky-h2">FAQ</h2>
-      <p class="sticky-sub">For official info, email or check LinkedIn below.</p>
-
-      <article class="card">
-        <details><summary>Do I need prior experience?</summary><p>No. We meet you where you are and help you build artifacts.</p></details>
-        <details><summary>Time commitment?</summary><p>1–2 events/week in peak weeks; project teams set cadence.</p></details>
-        <details><summary>How do I get updates?</summary><p>Email <a href="mailto:loopatucf@gmail.com">loopatucf@gmail.com</a> and follow <a href="https://www.linkedin.com/company/loopatucf/" target="_blank" rel="noopener">Loop on LinkedIn</a>.</p></details>
-      </article>
-    </section>
-
-    <!-- Contact (sticky title) -->
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading" class="sticky-h2">Contact & Links</h2>
-      <p class="sticky-sub">Reach out for collaborations or to learn more.</p>
-
-      <article class="card">
-        <p><strong>Email:</strong> <a href="mailto:loopatucf@gmail.com">loopatucf@gmail.com</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/loopatucf/" target="_blank" rel="noopener">Loop @ UCF</a></p>
-        
-      </article>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Kevin Francisco — Page highlighting my role founding Loop @ UCF.</p>
-    </div>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <footer class="foot">
+    <p>© 2026 Kevin Francisco</p>
   </footer>
+
+</div>
+
 </body>
 </html>
