@@ -190,13 +190,33 @@ img { max-width: 100%; display: block; }
   padding: .55rem;
   max-width: 24rem;
   justify-self: end;
+
+  /* Framing is done here, not in the image file.
+     --crop-zoom  how far the photo is scaled up inside the frame
+     --crop-x     horizontal nudge, more negative shows more of the right
+     --crop-y     vertical nudge, more negative shows more of the bottom
+     Current values show x 4%-78% and y 20%-65% of the source,
+     which puts the second person out of frame. */
+  --crop-zoom: 135.1%;
+  --crop-x: -5.4%;
+  --crop-y: -44%;
 }
-.home__portrait img {
-  width: 100%;
+
+.home__frame {
+  position: relative;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: center 24%;
+  overflow: hidden;
   border-radius: calc(var(--r-lg) - 8px);
+  background: var(--sky-0);
+}
+
+.home__frame img {
+  position: absolute;
+  width: var(--crop-zoom);
+  height: auto;
+  left: var(--crop-x);
+  top: var(--crop-y);
+  max-width: none;
 }
 
 .pill {
@@ -524,6 +544,7 @@ img { max-width: 100%; display: block; }
 
 /* deck inside a detail panel */
 .deck {
+  position: relative;
   border: 1px solid var(--hair);
   border-radius: var(--r-md);
   overflow: hidden;
@@ -548,34 +569,42 @@ img { max-width: 100%; display: block; }
 }
 .slide img { width: 100%; height: 100%; object-fit: contain; }
 
-.slide__nav {
+.deck__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 1.9rem;
-  height: 1.9rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, .85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--glass-edge);
+  box-shadow: 0 4px 12px -4px rgba(10, 42, 51, .35);
   color: var(--deep);
-  text-align: center;
-  line-height: 1.75rem;
-  text-decoration: none;
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
 }
-.slide__nav--prev { left: .5rem; }
-.slide__nav--next { right: .5rem; }
+.deck__nav:hover { border-color: var(--link); color: var(--link); }
+.deck__nav--prev { left: .55rem; }
+.deck__nav--next { right: .55rem; }
 
-.video {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: var(--r-md);
-  border: 1px solid var(--hair);
+.deck__count {
+  position: absolute;
+  right: .7rem;
+  bottom: .6rem;
+  margin: 0;
+  padding: .1rem .55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .85);
+  border: 1px solid var(--glass-edge);
+  font-size: .75rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
-.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* =========================================================
    CONTACT
@@ -643,7 +672,7 @@ img { max-width: 100%; display: block; }
   .detail__panel { padding: 2rem 1.25rem; }
   .home { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
   .home__portrait { justify-self: stretch; max-width: none; }
-  .home__portrait img { aspect-ratio: 4 / 5; }
+  .home__frame { aspect-ratio: 4 / 5; }
   .now dl { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
   .now dt { margin-top: .6rem; }
 }
@@ -682,5 +711,4 @@ img { max-width: 100%; display: block; }
   .deck__viewport { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
 }
-
 
