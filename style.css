@@ -364,9 +364,21 @@ img { max-width: 100%; display: block; }
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .card:hover {
-  transform: translateY(-4px);
+  animation: none;
+  transform: translateY(-7px);
   box-shadow: 0 30px 54px -28px rgba(10, 42, 51, .45), var(--sheen);
 }
+
+/* slow, offset drift so the cards never move in lockstep */
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+.card { animation: drift 7s ease-in-out infinite; }
+.node:nth-child(2n) .card { animation-delay: -1.4s; animation-duration: 8.2s; }
+.node:nth-child(3n) .card { animation-delay: -3.1s; animation-duration: 6.4s; }
+.node:nth-child(5n) .card { animation-delay: -4.6s; animation-duration: 9s; }
 
 .card__kind {
   display: inline-block;
