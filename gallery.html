@@ -415,17 +415,20 @@
 /* carousels */
 document.querySelectorAll('[data-deck]').forEach(function (deck) {
   var vp = deck.querySelector('.deck__viewport');
+  if (!vp) return;
   var cur = deck.querySelector('[data-current]');
+  var prev = deck.querySelector('.deck__nav--prev');
+  var next = deck.querySelector('.deck__nav--next');
   function go(dir) { vp.scrollBy({ left: dir * vp.clientWidth, behavior: 'smooth' }); }
-  deck.querySelector('.deck__nav--prev').addEventListener('click', function () { go(-1); });
-  deck.querySelector('.deck__nav--next').addEventListener('click', function () { go(1); });
+  if (prev) prev.addEventListener('click', function () { go(-1); });
+  if (next) next.addEventListener('click', function () { go(1); });
   vp.addEventListener('scroll', function () {
     if (cur) cur.textContent = Math.round(vp.scrollLeft / vp.clientWidth) + 1;
   });
 });
 
-/* Panels open and close without touching the URL, so the page never scrolls.
-   The href="#id" links still work if this script fails to load. */
+/* Panels open without touching the URL, so the page never scrolls.
+   Closing also clears any #hash, so panels opened from a direct link close too. */
 var openPanel = null;
 
 function show(panel) {
@@ -436,9 +439,21 @@ function show(panel) {
 }
 
 function hide() {
-  if (!openPanel) return;
-  openPanel.style.display = '';
-  openPanel = null;
+  var y = window.scrollY;
+
+  if (openPanel) {
+    openPanel.style.display = '';
+    openPanel = null;
+  }
+
+  if (location.hash) {
+    var root = document.documentElement;
+    var prevBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    location.hash = '';
+    window.scrollTo(0, y);
+    root.style.scrollBehavior = prevBehavior;
+  }
 }
 
 document.querySelectorAll('.card[href^="#"]').forEach(function (a) {
