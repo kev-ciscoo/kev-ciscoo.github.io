@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300..500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -189,9 +189,56 @@
 <p>Most language apps assume you want to learn a language. Before a trip, you do not. You want the twenty exchanges you are actually going to have, in the order you will have them.</p>
       <h3>How it works</h3>
       <p>Arrival takes your destination, how long the trip is, what you plan to do while you are there, how long you have before departure, and how much time you can study each day. From that it generates a plan that prioritizes the words, phrases, and situations you will genuinely run into.</p>
+
+      <h3>Walkthrough</h3>
+      <div class="deck deck--tall" data-deck>
+        <div class="deck__viewport" aria-label="Arrival walkthrough" tabindex="0">
+          <figure class="slide">
+            <img src="images/01-destination.png" alt="Choosing a destination country and city" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/02-dates.png" alt="Entering departure and return dates" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/03-capacity.png" alt="Choosing how many minutes a day to study" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/04-plan.png" alt="The generated plan, sized to the days remaining before departure" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/05-lessons.png" alt="Lessons grouped by situation, each shown as a leaf" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/06-phrase.png" alt="A phrase card showing how many travelers wished they had known it" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/07-comprehension.png" alt="Comprehension drill: hear a reply and choose what it means" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/08-refit.png" alt="Behind pace prompt offering to cut the plan down" loading="lazy">
+          </figure>
+          <figure class="slide">
+            <img src="images/09-tripcard.png" alt="Printable trip card with the phrases for the trip" loading="lazy">
+          </figure>
+        </div>
+        <button class="deck__nav deck__nav--prev" type="button" aria-label="Previous screen">&lsaquo;</button>
+        <button class="deck__nav deck__nav--next" type="button" aria-label="Next screen">&rsaquo;</button>
+        <p class="deck__count"><span data-current>1</span> / 9</p>
+      </div>
+
+      <h3>Documentation</h3>
+      <ul class="tools">
+        <li><a href="images/docs/prd_arrivalz.pdf">Product requirements</a></li>
+        <li><a href="images/docs/arrival-market-research.pdf">Market research</a></li>
+        <li><a href="images/docs/arrival-decision-log.pdf">Decision log</a></li>
+        <li><a href="images/docs/arrival-scheduling-logic.pdf">Scheduling logic</a></li>
+      </ul>
+
+      <h3>Try it</h3>
+      <p><a class="pill pill--solid" href="https://arrivalz.base44.app/" target="_blank" rel="noopener">Open Arrival</a></p>
+
       <h3>Where it stands</h3>
-      <p>Market research and the PRD are done and the build is underway.</p>
-      <p>Screenshots go here once you send them.</p>
+      <p>Plan generation, daily sessions, comprehension drills, and the trip card are live. Scenario rehearsal is next.</p>
   </div>
 </div>
 <div class="detail" id="disney-ux" role="dialog" aria-label="User Experience Strategy Intern">
@@ -377,7 +424,7 @@ document.querySelectorAll('[data-deck]').forEach(function (deck) {
 </script>
 
 <footer class="foot">
-  <p>© 2026 Kevin Francisco</p>
+  <p>&copy; 2026 Kevin Francisco</p>
   <p><a href="mailto:junior.cisco11@gmail.com">junior.cisco11@gmail.com</a></p>
 </footer>
 
