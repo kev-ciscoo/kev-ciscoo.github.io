@@ -424,39 +424,44 @@ document.querySelectorAll('[data-deck]').forEach(function (deck) {
   });
 });
 
-/* close a detail panel without losing your place in the timeline */
-var openedHere = false;
+/* Panels open and close without touching the URL, so the page never scrolls.
+   The href="#id" links still work if this script fails to load. */
+var openPanel = null;
 
-document.querySelectorAll('.card[href^="#"]').forEach(function (a) {
-  a.addEventListener('click', function () { openedHere = true; });
-});
-
-function closePanel() {
-  if (openedHere) {
-    openedHere = false;
-    history.back();
-  } else {
-    var y = window.scrollY;
-    var prev = document.documentElement.style.scrollBehavior;
-    document.documentElement.style.scrollBehavior = 'auto';
-    location.hash = '';
-    window.scrollTo(0, y);
-    document.documentElement.style.scrollBehavior = prev;
-  }
+function show(panel) {
+  if (openPanel) openPanel.style.display = '';
+  panel.style.display = 'flex';
+  panel.scrollTop = 0;
+  openPanel = panel;
 }
 
+function hide() {
+  if (!openPanel) return;
+  openPanel.style.display = '';
+  openPanel = null;
+}
+
+document.querySelectorAll('.card[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var panel = document.querySelector(a.getAttribute('href'));
+    if (!panel) return;
+    e.preventDefault();
+    show(panel);
+  });
+});
+
 document.querySelectorAll('.detail__close').forEach(function (btn) {
-  btn.addEventListener('click', function (e) { e.preventDefault(); closePanel(); });
+  btn.addEventListener('click', function (e) { e.preventDefault(); hide(); });
 });
 
 /* click the dimmed backdrop to close */
 document.querySelectorAll('.detail').forEach(function (d) {
-  d.addEventListener('click', function (e) { if (e.target === d) closePanel(); });
+  d.addEventListener('click', function (e) { if (e.target === d) hide(); });
 });
 
 /* Escape to close */
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && location.hash && location.hash !== '#timeline') closePanel();
+  if (e.key === 'Escape') hide();
 });
 </script>
 
