@@ -418,6 +418,39 @@ img { max-width: 100%; display: block; }
 .card__blurb { margin: 0; font-size: .9375rem; color: var(--muted); }
 .card__more { margin-top: 1rem; font-size: .875rem; color: var(--link); }
 
+/* thumbnail preview on a timeline card */
+.card__thumb {
+  margin: 0 0 1rem;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #F2EFE8;
+}
+.card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* cards with something to open: gold ring instead of the default glass edge */
+.card--live {
+  border-color: rgba(184, 128, 42, .45);
+  box-shadow: 0 0 0 1px rgba(184, 128, 42, .22),
+              0 22px 44px -26px rgba(10, 42, 51, .38), var(--sheen);
+}
+.card--live:hover {
+  box-shadow: 0 0 0 1px rgba(184, 128, 42, .5),
+              0 0 26px -4px rgba(184, 128, 42, .35),
+              0 30px 54px -28px rgba(10, 42, 51, .45), var(--sheen);
+}
+.card--live .card__more { color: #A8741F; }
+
+.card__kind--live {
+  background: rgba(184, 128, 42, .14);
+  color: #8A5E14;
+}
+
 /* =========================================================
    DETAIL OVERLAYS (:target, no JS)
    ========================================================= */
@@ -552,6 +585,10 @@ img { max-width: 100%; display: block; }
   aspect-ratio: 16 / 9;
 }
 .slide img { width: 100%; height: 100%; object-fit: contain; }
+
+/* decks of tall phone screenshots rather than 16:9 slides */
+.deck--tall .slide { aspect-ratio: 9 / 16; max-height: 70vh; }
+.deck--tall .slide img { object-fit: contain; }
 
 .deck__nav {
   position: absolute;
