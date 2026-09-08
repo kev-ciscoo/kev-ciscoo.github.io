@@ -412,6 +412,7 @@
 </div>
 
 <script>
+/* carousels */
 document.querySelectorAll('[data-deck]').forEach(function (deck) {
   var vp = deck.querySelector('.deck__viewport');
   var cur = deck.querySelector('[data-current]');
@@ -421,6 +422,41 @@ document.querySelectorAll('[data-deck]').forEach(function (deck) {
   vp.addEventListener('scroll', function () {
     if (cur) cur.textContent = Math.round(vp.scrollLeft / vp.clientWidth) + 1;
   });
+});
+
+/* close a detail panel without losing your place in the timeline */
+var openedHere = false;
+
+document.querySelectorAll('.card[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function () { openedHere = true; });
+});
+
+function closePanel() {
+  if (openedHere) {
+    openedHere = false;
+    history.back();
+  } else {
+    var y = window.scrollY;
+    var prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    location.hash = '';
+    window.scrollTo(0, y);
+    document.documentElement.style.scrollBehavior = prev;
+  }
+}
+
+document.querySelectorAll('.detail__close').forEach(function (btn) {
+  btn.addEventListener('click', function (e) { e.preventDefault(); closePanel(); });
+});
+
+/* click the dimmed backdrop to close */
+document.querySelectorAll('.detail').forEach(function (d) {
+  d.addEventListener('click', function (e) { if (e.target === d) closePanel(); });
+});
+
+/* Escape to close */
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && location.hash && location.hash !== '#timeline') closePanel();
 });
 </script>
 
